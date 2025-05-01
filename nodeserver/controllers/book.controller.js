@@ -17,8 +17,8 @@ export const getBookById = async (req, res) => {
             ]
         }).limit(10);
 
-        // Add related books to response
-        const bookWithRelated = {
+        // Add related books to response 
+        const bookWithRelated = { 
             ...book.toObject(),
             relatedBooks
         };

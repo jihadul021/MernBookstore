@@ -22,7 +22,7 @@ export default function BookView() {
     // Fetch book details with stock info
     useEffect(() => {
         if (!id) return;
-        fetch(`http://localhost:4000/book/${id}`)
+        fetch(`http://localhost:1015/book/${id}`)
             .then(res => res.json())
             .then(data => {
                 setBook(data);
@@ -35,7 +35,7 @@ export default function BookView() {
         const email = localStorage.getItem('userEmail');
         if (email) {
             setUser({ email });
-            fetch(`http://localhost:4000/user/profile?email=${email}`)
+            fetch(`http://localhost:1015/user/profile?email=${email}`)
                 .then(res => res.ok ? res.json() : null)
                 .then(data => {
                     if (data) {
@@ -49,7 +49,7 @@ export default function BookView() {
     // Add/update cart state loading
     useEffect(() => {
         if (!userEmail) return;
-        fetch(`http://localhost:4000/cart?email=${encodeURIComponent(userEmail)}`)
+        fetch(`http://localhost:1015/cart?email=${encodeURIComponent(userEmail)}`)
             .then(res => res.json())
             .then(data => {
                 const cartMap = {};
@@ -61,7 +61,7 @@ export default function BookView() {
     // Add/update wishlist state loading
     useEffect(() => {
         if (!userEmail) return;
-        fetch(`http://localhost:4000/wishlist?email=${encodeURIComponent(userEmail)}`)
+        fetch(`http://localhost:1015/wishlist?email=${encodeURIComponent(userEmail)}`)
             .then(res => res.json())
             .then(data => {
                 const wishMap = {};
@@ -83,7 +83,7 @@ export default function BookView() {
 
         try {
             const isInCart = !!cart[bookId];
-            const response = await fetch(`http://localhost:4000/cart/${isInCart ? 'remove' : 'add'}/${bookId}`, {
+            const response = await fetch(`http://localhost:1015/cart/${isInCart ? 'remove' : 'add'}/${bookId}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: userEmail })
@@ -113,7 +113,7 @@ export default function BookView() {
 
         try {
             const isInWishlist = !!wishlist[bookId];
-            const response = await fetch(`http://localhost:4000/wishlist/${isInWishlist ? 'remove' : 'add'}/${bookId}`, {
+            const response = await fetch(`http://localhost:1015/wishlist/${isInWishlist ? 'remove' : 'add'}/${bookId}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: userEmail })
@@ -172,13 +172,13 @@ export default function BookView() {
         if (!img) return 'https://via.placeholder.com/300x450?text=No+Image';
         if (img.startsWith('data:image/')) return img;
         if (/^https?:\/\//.test(img)) return img;
-        return `http://localhost:4000/uploads/${img}`;
+        return `http://localhost:1015/uploads/${img}`;
     };
 
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch(`http://localhost:4000/filter/search?query=${searchQuery}`);
+            const res = await fetch(`http://localhost:1015/filter/search?query=${searchQuery}`);
             const data = await res.json();
             navigate('/', { state: { searchResults: data } });
         } catch (error) {
@@ -493,7 +493,7 @@ export default function BookView() {
                                                         borderRadius: '12px',
                                                         fontSize: '0.75rem',
                                                         fontWeight: '600'
-                                                    }}
+                                                    }} 
                                                 >
                                                     {relatedBook.bookType === 'old' ? 'OLD' : 'NEW'}
                                                 </div>

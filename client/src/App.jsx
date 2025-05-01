@@ -78,7 +78,7 @@ export default function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/filter" element={<Filter />} />
         <Route path="/buyer-books" element={<BuyerBookList />} />
-        <Route path="/book/:id" element={<BookView />} />
+        <Route path="/book/:id" element={<BookView />} /> 
         {/* Always keep the 404 route last */}
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>

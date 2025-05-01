@@ -39,7 +39,7 @@ export default function Homepage() {
       setUser({ email });
       fetch(`http://localhost:1015/user/profile?email=${email}`)
         .then(res => res.ok ? res.json() : null)
-        .then(data => {
+        .then(data => { 
           if (data) {
             if (data.profilePicture) setProfilePic(data.profilePicture);
             if (data.username) setUsername(data.username);

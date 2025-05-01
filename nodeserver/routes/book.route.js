@@ -22,7 +22,7 @@ router.get('/seller/:email', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-});
+}); 
 
 // Fetch book by ID
 router.get('/:id', getBookById);
