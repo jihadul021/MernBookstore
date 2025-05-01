@@ -15,11 +15,11 @@ export const getBookById = async (req, res) => {
                 { category: { $in: book.category } },
                 { author: book.author }
             ]
-        }).limit(10);
+        }).limit(10); 
 
         // Add related books to response 
         const bookWithRelated = { 
-            ...book.toObject(),
+            ...book.toObject(), 
             relatedBooks
         };
 

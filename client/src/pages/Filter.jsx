@@ -685,7 +685,7 @@ export default function BookFilter() {
                               minWidth: 90,
                               textAlign: 'center',
                               display: 'inline-block'
-                            }}
+                            }} 
                           >
                             Out of Stock
                           </span>

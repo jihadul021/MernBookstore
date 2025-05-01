@@ -82,6 +82,6 @@ export default function App() {
         {/* Always keep the 404 route last */}
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter> 
   );
 }

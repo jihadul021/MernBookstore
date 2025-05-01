@@ -20,7 +20,7 @@ export default function BookView() {
     const scrollRef = React.useRef();
 
     // Fetch book details with stock info
-    useEffect(() => {
+    useEffect(() => { 
         if (!id) return;
         fetch(`http://localhost:1015/book/${id}`)
             .then(res => res.json())

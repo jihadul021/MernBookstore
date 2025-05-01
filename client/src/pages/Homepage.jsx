@@ -540,7 +540,7 @@ export default function Homepage() {
                     >
                       {wishlist[book._id] ? <FaHeart /> : <FaRegHeart />}
                     </span>
-                  )}
+                  )} 
                 </div>
                 <div className="book-info">
                   <h3 style={{ marginBottom: 4 }}>{book.title}</h3>
