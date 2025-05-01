@@ -128,11 +128,18 @@ export default function Homepage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: userEmail })
     })
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to update cart');
+        return res.json();
+      })
       .then(data => {
         const cartMap = {};
         data.forEach(book => { cartMap[book._id] = true; });
         setCart(cartMap);
+      })
+      .catch(error => {
+        console.error('Cart operation failed:', error);
+        alert('Failed to update cart. Please try again.');
       });
   };
 
@@ -477,7 +484,9 @@ export default function Homepage() {
               <div
                 key={book._id || index}
                 className="book-card"
+                onClick={() => navigate(`/book/${book._id}`)} 
                 style={{
+                  cursor: 'pointer',
                   display: 'inline-block',
                   verticalAlign: 'top',
                   width: 220,

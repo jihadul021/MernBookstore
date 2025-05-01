@@ -1,5 +1,6 @@
 import express from 'express';
 import AddBook from '../models/AddBook.model.js';
+import { getBookById } from '../controllers/book.controller.js';
 
 const router = express.Router();
 
@@ -22,6 +23,9 @@ router.get('/seller/:email', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+// Fetch book by ID
+router.get('/:id', getBookById);
 
 // Update stock (non-negative integer only)
 router.put('/update-stock/:id', async (req, res) => {

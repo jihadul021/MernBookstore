@@ -581,7 +581,9 @@ export default function BookFilter() {
                 return (
                   <div
                     key={book._id}
+                    onClick={() => navigate(`/book/${book._id}`)}
                     style={{
+                      cursor: 'pointer',
                       display: 'flex',
                       backgroundColor: 'rgba(255, 255, 255, 0.15)',
                       borderRadius: '12px',
@@ -649,8 +651,10 @@ export default function BookFilter() {
                       {/* Action Buttons */}
                       <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
                         {/* Wishlist toggle */}
-                        <button
-                          onClick={() => handleToggleWishlist(book._id)}
+                        <button onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleToggleWishlist(book._id);
+                                    }}
                           style={{
                             background: isInWishlist ? '#e65100' : '#fff',
                             color: isInWishlist ? '#fff' : '#e65100',
@@ -687,7 +691,10 @@ export default function BookFilter() {
                           </span>
                         ) : (
                           <button
-                            onClick={() => handleToggleCart(book._id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleToggleCart(book._id);
+                          }}
                             style={{
                               background: isInCart ? '#e65100' : '#fff',
                               color: isInCart ? '#fff' : '#e65100',
